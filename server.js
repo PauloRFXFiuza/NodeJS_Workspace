@@ -41,9 +41,16 @@ server.get('/node' , () => {
 })
 */
 
-// Criar uma rota para postar videos com o POST http://localhost:3000/videos
+/* 
+Criar uma rota para postar videos com o POST http://localhost:3000/videos
+Criar um Request Body
+*/
 
 server.post('/videos' , (request, reply) => {
+  const body = request.body
+
+  console.log(body)
+
   database.create({
     title: 'Video 01',
     description: 'Este eh o Video 01',
