@@ -82,8 +82,12 @@ server.put('/videos/:id' , (request, reply) => {
   return reply.status(204).send()
 })
 
-server.delete('/videos/:id' , () => {
-  return 'Hi Brasil, Sao Paulo, SP, SBC!'
+server.delete('/videos/:id' , (request, reply) => {
+  const videoId = request.params.id
+  
+  database.delete(videoId)
+    // status(204) significa que o procedimento foi bem sucedido, porem com resposta vazia
+  return reply.status(204).send()
 })
 
 server.listen({

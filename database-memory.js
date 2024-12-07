@@ -8,7 +8,16 @@ export class databaseMemory{
     Set e uma array do js que não aceita valores duplicados
     */
     list() {
-        return Array.from(this.#videos.values())
+        return Array.from(this.#videos.entries()).map((videoArray)=>{
+            const id = videoArray[0]
+            const data = videoArray[1]
+
+            return {
+                id,
+                ...data,
+            }
+
+        })
     }
     
     create(video){
