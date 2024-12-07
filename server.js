@@ -22,7 +22,10 @@ Instalar o microframework fastify no terminal através do comando npm install fa
 //Com o fastify
 
 import { fastify } from 'fastify'
+import { databaseMemory } from './database-memory.js'
+
 const server = fastify()
+const database = new databaseMemory()
 
 server.get('/' , () => {
   return 'Hi People!'
@@ -40,8 +43,17 @@ server.get('/node' , () => {
 
 // Criar uma rota para postar videos com o POST http://localhost:3000/videos
 
-server.post('/videos' , () => {
-  return 'Hi Brasil!'
+server.post('/videos' , (request, reply) => {
+  database.create({
+    title: 'Video 01',
+    description: 'Este eh o Video 01',
+    duration: 180,
+  })
+
+  console.log(database.list())
+
+  return reply.status(201).send()
+  //status(201) significa que algo foi criado
 })
 
 server.get('/videos' , () => {
@@ -59,3 +71,8 @@ server.delete('/videos/:id' , () => {
 server.listen({
   port: 3000,
 })
+
+/* 
+Criar uma base de dados em memória com o database-memory.js
+Criar um arquivo routes.html para que o servidor possa rodar .put , .delete ,...etc.
+*/ 
