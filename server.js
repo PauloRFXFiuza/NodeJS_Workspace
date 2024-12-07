@@ -28,12 +28,32 @@ server.get('/' , () => {
   return 'Hi People!'
 })
 
+/*
 server.get('/hi' , () => {
   return 'Hi Brasil!'
 })
 
 server.get('/node' , () => {
   return 'Hi Node.js'
+})
+*/
+
+// Criar uma rota para postar videos com o POST http://localhost:3000/videos
+
+server.post('/videos' , () => {
+  return 'Hi Brasil!'
+})
+
+server.get('/videos' , () => {
+  return 'Hi Brasil, Sao Paulo!'
+})
+
+server.put('/videos/:id' , () => {
+  return 'Hi Brasil, Sao Paulo, SP!'
+})
+
+server.delete('/videos/:id' , () => {
+  return 'Hi Brasil, Sao Paulo, SP, SBC!'
 })
 
 server.listen({
