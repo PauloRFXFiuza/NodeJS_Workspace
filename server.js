@@ -47,14 +47,14 @@ Criar um Request Body
 */
 
 server.post('/videos' , (request, reply) => {
-  const body = request.body
+  const {title, description, duration} = request.body
 
   console.log(body)
 
   database.create({
-    title: 'Video 01',
-    description: 'Este eh o Video 01',
-    duration: 180,
+    title: title,
+    description: description,
+    duration: duration,
   })
 
   console.log(database.list())
@@ -63,8 +63,9 @@ server.post('/videos' , (request, reply) => {
   //status(201) significa que algo foi criado
 })
 
-server.get('/videos' , () => {
-  return 'Hi Brasil, Sao Paulo!'
+server.get('/videos' , (request, reply) => {
+  const videos = database.list()
+  return videos
 })
 
 server.put('/videos/:id' , () => {

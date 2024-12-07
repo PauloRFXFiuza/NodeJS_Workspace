@@ -8,3 +8,8 @@ Accept-Language: en
     "description": "Este eh o Video 01",
     "duration": 180
 }
+
+// utiliza-se o ### para separar a requisições (Request)
+
+###
+GET http://localhost:3000/videos
