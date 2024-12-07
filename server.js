@@ -63,7 +63,7 @@ server.post('/videos' , (request, reply) => {
   //status(201) significa que algo foi criado
 })
 
-server.get('/videos' , (request, reply) => {
+server.get('/videos' , () => {
   const videos = database.list()
   return videos
 })
